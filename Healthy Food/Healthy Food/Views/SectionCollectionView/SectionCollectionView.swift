@@ -40,7 +40,7 @@ class SectionCollectionView: UICollectionView, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: "article", for: indexPath) as! SectionCollectionViewCell
-        cell.updateUI(articleItem: cells?[indexPath.row])
+        cell.updateUI(articleItem: cells?[indexPath.row], indexPath: indexPath.row)
         
         return cell
     }

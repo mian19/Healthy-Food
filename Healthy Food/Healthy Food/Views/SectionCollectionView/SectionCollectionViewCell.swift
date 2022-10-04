@@ -9,6 +9,7 @@ import UIKit
 
 class SectionCollectionViewCell: UICollectionViewCell {
     
+    let backColorsForArticles = [UIColor(rgb: 0xe4f5f6, a: 0.5), UIColor(rgb: 0xd1efff, a: 0.5), UIColor(rgb: 0x98cee6, a: 0.5), UIColor(rgb: 0xced7f6, a: 0.5)]
     @IBOutlet weak var sectionImageView: UIImageView!
     @IBOutlet weak var sectionNameLabel: UILabel!
     
@@ -18,19 +19,18 @@ class SectionCollectionViewCell: UICollectionViewCell {
         clipsToBounds = true
     }
 
-    
-    func updateUI(articleItem: Item?) {
+    func updateUI(articleItem: Item?, indexPath: Int) {
+        backgroundColor = backColorsForArticles[indexPath % backColorsForArticles.count]
         sectionNameLabel.text = articleItem?.title ?? "Loading..."
         
         guard let imageURLString = articleItem?.image.the1X else { return }
-        print(imageURLString)
         guard let imageURL = URL(string: imageURLString) else {
             sectionImageView.image = UIImage(named: "noImageAvailable")
             return }
         
         sectionImageView.image = nil
         sectionImageView.contentMode = .top
-        
+    
         setImageForArticle(url: imageURL)
     }
     
