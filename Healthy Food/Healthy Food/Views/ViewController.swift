@@ -7,17 +7,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UICollectionViewDelegate {
+    
+    private let sectionHeight: CGFloat = 280
     private var jsonResponse: JSONResponse? = JSONManager().fetchingInformation()
     private var categoryCollectionView: SectionCollectionView!
     private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 400)
+        guard let jsonResponse = jsonResponse else { return .zero}
+        let height: CGFloat = CGFloat(jsonResponse.sections.count) * sectionHeight + CGFloat((jsonResponse.sections.count - 1) * 10)
+        return CGSize(width: view.frame.width, height: height)
     }
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
         scrollView.frame = view.bounds
         scrollView.contentSize = contentSize
         return scrollView
@@ -25,7 +27,7 @@ class ViewController: UIViewController {
     
     private lazy var contentView: UIView = {
         let contentView = UIView()
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = UIColor(rgb: 0xf4f6f7)
         contentView.frame.size = contentSize
         return contentView
     }()
@@ -34,7 +36,7 @@ class ViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.spacing = 20
+        stackView.spacing = 10
         return stackView
     }()
     
@@ -45,7 +47,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setCategoryCollection()
-      setConstraints()
+        setConstraints()
     }
     
     private func setView() {
@@ -54,33 +56,44 @@ class ViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
-
     }
     
     private func setCategoryCollection() {
-        categoryCollectionView = SectionCollectionView()
-        stackView.addArrangedSubview(categoryCollectionView)
+        for index in 0..<(jsonResponse?.sections.count ?? 0) {
+            let sectionView = SectionView()
+            sectionView.sectionName.text = jsonResponse?.sections[index].header
+            fillArticles(section: sectionView, index: index)
+            
+            stackView.addArrangedSubview(sectionView)
+        }
+    }
+    
+    private func fillArticles(section: SectionView, index: Int) {
+        section.sectionArticlesCollection.vcDelegate = self
+        section.sectionArticlesCollection.cells = jsonResponse?.sections[index].items
     }
     
     private func setConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-        
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            contentView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 10)
         ])
         
         for view in stackView.arrangedSubviews {
             NSLayoutConstraint.activate([
-                view.widthAnchor.constraint(equalToConstant: 300),
-                view.heightAnchor.constraint(equalToConstant: 300)
+                view.widthAnchor.constraint(equalTo: stackView.widthAnchor),
+                view.heightAnchor.constraint(equalToConstant: sectionHeight)
             ])
         }
     }
     
-//
-  
+    private func fillArticlesInSections() {
+        
+    }
+    
+    
 }
 

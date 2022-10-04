@@ -14,7 +14,6 @@ class SectionCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 10
         clipsToBounds = true
     }
@@ -24,27 +23,27 @@ class SectionCollectionViewCell: UICollectionViewCell {
         sectionNameLabel.text = articleItem?.title ?? "Loading..."
         
         guard let imageURLString = articleItem?.image.the1X else { return }
-        
+        print(imageURLString)
         guard let imageURL = URL(string: imageURLString) else {
             sectionImageView.image = UIImage(named: "noImageAvailable")
             return }
         
         sectionImageView.image = nil
-        sectionImageView.contentMode = .scaleToFill
+        sectionImageView.contentMode = .top
         
-      //  setImageForArticle(url: imageURL)
+        setImageForArticle(url: imageURL)
     }
     
     //MARK: - work with network
-//    private func setImageForArticle(url: URL) {
-//        NetworkManager().getImageForCategorySushi(url: url) { [weak self] (result) in
-//            switch result {
-//            case .success(let image):
-//                self?.categoryImageView.image = image
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
+    private func setImageForArticle(url: URL) {
+        NetworkManager().getImageForArticle(url: url) { [weak self] (result) in
+            switch result {
+            case .success(let image):
+                self?.sectionImageView.image = image
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
 }

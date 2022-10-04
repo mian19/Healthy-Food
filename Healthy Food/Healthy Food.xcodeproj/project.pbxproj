@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67170F5028EC225F003A8000 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67170F4F28EC225F003A8000 /* SectionView.swift */; };
+		67170F5228EC431C003A8000 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67170F5128EC431C003A8000 /* NetworkManager.swift */; };
 		67DDF3EB28EAE96F00E42EC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DDF3EA28EAE96F00E42EC4 /* AppDelegate.swift */; };
 		67DDF3ED28EAE96F00E42EC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DDF3EC28EAE96F00E42EC4 /* SceneDelegate.swift */; };
 		67DDF3EF28EAE96F00E42EC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DDF3EE28EAE96F00E42EC4 /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67170F4F28EC225F003A8000 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		67170F5128EC431C003A8000 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		67DDF3E728EAE96F00E42EC4 /* Healthy Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Healthy Food.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DDF3EA28EAE96F00E42EC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67DDF3EC28EAE96F00E42EC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 			children = (
 				67DDF43728EB886700E42EC4 /* SectionCollectionView */,
 				67DDF3EA28EAE96F00E42EC4 /* AppDelegate.swift */,
+				67170F4F28EC225F003A8000 /* SectionView.swift */,
 				67DDF3EC28EAE96F00E42EC4 /* SceneDelegate.swift */,
 				67DDF3EE28EAE96F00E42EC4 /* ViewController.swift */,
 			);
@@ -104,6 +109,7 @@
 		67DDF40128EAED2700E42EC4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				67170F5128EC431C003A8000 /* NetworkManager.swift */,
 				67DDF40C28EB1E0800E42EC4 /* JSONManager.swift */,
 			);
 			path = Services;
@@ -219,6 +225,8 @@
 			files = (
 				67DDF3EF28EAE96F00E42EC4 /* ViewController.swift in Sources */,
 				67DDF43928EB889500E42EC4 /* SectionCollectionView.swift in Sources */,
+				67170F5228EC431C003A8000 /* NetworkManager.swift in Sources */,
+				67170F5028EC225F003A8000 /* SectionView.swift in Sources */,
 				67DDF40D28EB1E0800E42EC4 /* JSONManager.swift in Sources */,
 				67DDF40928EAF66C00E42EC4 /* UIColor+hex.swift in Sources */,
 				67DDF3EB28EAE96F00E42EC4 /* AppDelegate.swift in Sources */,
