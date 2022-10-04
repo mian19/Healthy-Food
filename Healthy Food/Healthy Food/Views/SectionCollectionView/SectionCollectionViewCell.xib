@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="138" height="74"/>
                         <color key="backgroundColor" red="0.91808676720000004" green="0.92805427309999999" blue="0.94659882780000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MoO-qT-vcd" userLabel="Section Name Label">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MoO-qT-vcd" userLabel="Section Name Label">
                         <rect key="frame" x="10" y="82" width="118" height="70"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="Cke-pZ-mFw"/>

@@ -1,8 +1,8 @@
 //
 //  NetworkManager.swift
-//  SushiShop
+//  Healthy Food
 //
-//  Created by Kyzu on 6.07.22.
+//  Created by Kyzu on 3.10.22.
 //
 
 import Foundation

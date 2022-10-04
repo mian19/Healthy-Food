@@ -11,7 +11,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     private let sectionHeight: CGFloat = 280
     private var jsonResponse: JSONResponse? = JSONManager().fetchingInformation()
-    private var categoryCollectionView: SectionCollectionView!
+    var selectedArticles = Set<Dictionary<Int, Int>>()
     private var contentSize: CGSize {
         guard let jsonResponse = jsonResponse else { return .zero}
         let height: CGFloat = CGFloat(jsonResponse.sections.count) * sectionHeight + CGFloat((jsonResponse.sections.count - 1) * 10)
@@ -61,6 +61,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     private func setCategoryCollection() {
         for index in 0..<(jsonResponse?.sections.count ?? 0) {
             let sectionView = SectionView()
+            sectionView.sectionArticlesCollection.indexInStack = index
             sectionView.sectionName.text = jsonResponse?.sections[index].header
             fillArticles(section: sectionView, index: index)
             
@@ -90,8 +91,18 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         }
     }
     
-    private func fillArticlesInSections() {
-        
+    func checkSelectedArticle(indexInStack: Int, selectedIndex: IndexPath) -> Bool {
+        var returnedBool = true
+        let checkedArticle = [indexInStack: selectedIndex.row]
+        if selectedArticles.count <= 6 {
+            if selectedArticles.contains(checkedArticle) {
+                selectedArticles.remove(checkedArticle)
+            } else if selectedArticles.count < 6 {
+                selectedArticles.insert(checkedArticle)
+                returnedBool = false
+            }
+        }
+        return returnedBool
     }
     
     

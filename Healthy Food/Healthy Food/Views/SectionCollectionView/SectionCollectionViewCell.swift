@@ -17,8 +17,9 @@ class SectionCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         layer.cornerRadius = 10
         clipsToBounds = true
+        sectionNameLabel.adjustsFontSizeToFitWidth = true
     }
-
+    
     func updateUI(articleItem: Item?, indexPath: Int) {
         backgroundColor = backColorsForArticles[indexPath % backColorsForArticles.count]
         sectionNameLabel.text = articleItem?.title ?? "Loading..."
@@ -30,7 +31,7 @@ class SectionCollectionViewCell: UICollectionViewCell {
         
         sectionImageView.image = nil
         sectionImageView.contentMode = .top
-    
+        
         setImageForArticle(url: imageURL)
     }
     

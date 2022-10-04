@@ -8,7 +8,7 @@
 import UIKit
 
 class SectionView: UIView {
-
+    
     var sectionName: UILabel!
     var sectionArticlesCollection: SectionCollectionView!
     
@@ -47,5 +47,5 @@ class SectionView: UIView {
         sectionArticlesCollection.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         sectionArticlesCollection.heightAnchor.constraint(equalToConstant: 225).isActive = true
     }
-
+    
 }
